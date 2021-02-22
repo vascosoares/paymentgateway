@@ -13,3 +13,8 @@
 /PaymentApi/PaymentApi.Domain/obj
 /PaymentApi/PaymentApi.Data/bin/Debug/netcoreapp3.1
 /PaymentApi/PaymentApi.Data/obj
+/PaymentGatewayApi/PaymentGatewayApi/bin/Debug/net5.0
+/PaymentGatewayApi/.vs/PaymentGatewayApi
+/PaymentGatewayApi/PaymentGatewayApi.Domain/obj
+/PaymentGatewayApi/PaymentGatewayApi.Messaging.Send/obj
+/PaymentGatewayApi/PaymentGatewayApi/obj
