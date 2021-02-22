@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi", "PaymentApi\PaymentApi.csproj", "{DB8F214C-BBCD-4458-85A5-8C01A285276E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0878A09-2D8B-4329-AB10-5BA2DD6D2AB8}"
+	ProjectSection(SolutionItems) = preProject
+		.filenesting.json = .filenesting.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{E36D21CC-CC74-46FE-86AD-475F246A90A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Domain", "PaymentApi.Domain\PaymentApi.Domain.csproj", "{475799A5-D9FE-4A49-A174-11EEB60F7826}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{43FEEB40-9247-40A8-9F11-4E6A09A7E6EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Test", "Tests\PaymentApi.Test\PaymentApi.Test.csproj", "{8D611724-400A-415B-9F51-7B3FF90A6748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Data", "PaymentApi.Data\PaymentApi.Data.csproj", "{A6239936-112F-49D0-9846-832255A3773C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Service", "PaymentApi.Service\PaymentApi.Service.csproj", "{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB8F214C-BBCD-4458-85A5-8C01A285276E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8F214C-BBCD-4458-85A5-8C01A285276E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8F214C-BBCD-4458-85A5-8C01A285276E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8F214C-BBCD-4458-85A5-8C01A285276E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{475799A5-D9FE-4A49-A174-11EEB60F7826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{475799A5-D9FE-4A49-A174-11EEB60F7826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{475799A5-D9FE-4A49-A174-11EEB60F7826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{475799A5-D9FE-4A49-A174-11EEB60F7826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D611724-400A-415B-9F51-7B3FF90A6748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D611724-400A-415B-9F51-7B3FF90A6748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D611724-400A-415B-9F51-7B3FF90A6748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D611724-400A-415B-9F51-7B3FF90A6748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6239936-112F-49D0-9846-832255A3773C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6239936-112F-49D0-9846-832255A3773C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6239936-112F-49D0-9846-832255A3773C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6239936-112F-49D0-9846-832255A3773C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB8F214C-BBCD-4458-85A5-8C01A285276E} = {E36D21CC-CC74-46FE-86AD-475F246A90A7}
+		{475799A5-D9FE-4A49-A174-11EEB60F7826} = {E36D21CC-CC74-46FE-86AD-475F246A90A7}
+		{8D611724-400A-415B-9F51-7B3FF90A6748} = {43FEEB40-9247-40A8-9F11-4E6A09A7E6EC}
+		{A6239936-112F-49D0-9846-832255A3773C} = {E36D21CC-CC74-46FE-86AD-475F246A90A7}
+		{7EB5770A-689B-4B8B-BDFA-62D34E18C0AB} = {E36D21CC-CC74-46FE-86AD-475F246A90A7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C877C308-BB88-4B17-9998-7FFFFDB73236}
+	EndGlobalSection
+EndGlobal
