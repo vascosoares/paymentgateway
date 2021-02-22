@@ -33,7 +33,7 @@ using PaymentApi.Models.v1;
 using PaymentApi.Service.v1.Command;
 using PaymentApi.Service.v1.Query;
 //using PaymentApi.Service.v1.Services;
-//using PaymentApi.Validators.v1;
+using PaymentApi.Validators.v1;
 
 namespace PaymentApi
 {
@@ -76,9 +76,9 @@ namespace PaymentApi
                     }
                 });
 
-                /*var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);*/
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -98,14 +98,15 @@ namespace PaymentApi
                 };
             });
 
-            //services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ICustomerNameUpdateService).Assembly);
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IPaymentRepository, PaymentRepository>();
 
-            //services.AddTransient<IValidator<PaymentModel>, PaymentModelValidator>();
+            services.AddTransient<IValidator<PaymentModel>, PaymentModelValidator>();
 
             services.AddTransient<IRequestHandler<GetPaymentByIdQuery, Payment>, GetPaymentByIdQueryHandler>();
+            services.AddTransient<IRequestHandler<CreatePaymentCommand, Payment>, CreatePaymentCommandHandler>();
 
             //services.AddTransient<ICustomerNameUpdateService, CustomerNameUpdateService>();
 
