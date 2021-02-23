@@ -18,3 +18,5 @@
 /PaymentGatewayApi/PaymentGatewayApi.Domain/obj
 /PaymentGatewayApi/PaymentGatewayApi.Messaging.Send/obj
 /PaymentGatewayApi/PaymentGatewayApi/obj
+/PaymentApi/PaymentApi.Messaging.Receive/obj
+/PaymentApi/PaymentApi.Messaging.Receive/bin/Debug/netcoreapp3.1
