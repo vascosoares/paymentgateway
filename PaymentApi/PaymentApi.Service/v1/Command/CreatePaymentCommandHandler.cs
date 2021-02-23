@@ -17,6 +17,8 @@ namespace PaymentApi.Service.v1.Command
 
         public async Task<Payment> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
         {
+            // Call external gateway here!!! (Synch or Asynch?)
+
             return await _paymentRepository.AddAsync(request.Payment);
         }
     }
