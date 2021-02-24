@@ -20,3 +20,6 @@
 /PaymentGatewayApi/PaymentGatewayApi/obj
 /PaymentApi/PaymentApi.Messaging.Receive/obj
 /PaymentApi/PaymentApi.Messaging.Receive/bin/Debug/netcoreapp3.1
+/AcquiringBankMock/.vs/AcquiringBankMock/v16
+/AcquiringBankMock/AcquiringBankMock/bin/Debug/net5.0
+/AcquiringBankMock/AcquiringBankMock/obj
