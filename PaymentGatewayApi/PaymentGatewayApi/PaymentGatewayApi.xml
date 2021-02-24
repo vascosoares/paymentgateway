@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaymentGatewayApi</name>
+    </assembly>
+    <members>
+        <member name="M:PaymentGatewayApi.Controllers.v1.PaymentGatewayController.Payment(PaymentGatewayApi.Models.v1.CreatePaymentModel)">
+            <summary>
+                Action to create a new payment.
+            </summary>
+            <param name="createPaymentModel">Model to create a new payment</param>
+            <returns>Returns the created payment</returns>
+            <response code="200">Returned if the payment was created</response>
+            <response code="400">Returned if the model couldn't be parsed or saved</response>
+            <response code="422">Returned when the validation failed</response>
+        </member>
+        <member name="M:PaymentGatewayApi.Controllers.v1.PaymentGatewayController.Payment(System.Guid)">
+            <summary>
+                Action to retrieve a payment by id.
+            </summary>
+            <param name="id">The id of the payment</param>
+            <returns>Returns the payment</returns>
+            <response code="200">Returned if the payment id was found</response>
+            <response code="400">Returned if the payment could not be found with the provided id</response>
+        </member>
+    </members>
+</doc>

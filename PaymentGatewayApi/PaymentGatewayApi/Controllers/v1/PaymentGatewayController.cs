@@ -8,9 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaymentGatewayApi.Domain;
 using PaymentGatewayApi.Models.v1;
+using PaymentGatewayApi.Service.v1.Command;
+using PaymentGatewayApi.Service.v1.Query;
 
 namespace PaymentGatewayApi.Controllers.v1
 {
+    [Produces("application/json")]
+    [Route("v1/[controller]")]
+    [ApiController]
     public class PaymentGatewayController : ControllerBase
     {
         private readonly ILogger<PaymentGatewayController> _logger;
@@ -27,7 +32,7 @@ namespace PaymentGatewayApi.Controllers.v1
         /// <summary>
         ///     Action to create a new payment.
         /// </summary>
-        /// <param name="paymentGatewayModel">Model to create a new payment</param>
+        /// <param name="createPaymentModel">Model to create a new payment</param>
         /// <returns>Returns the created payment</returns>
         /// <response code="200">Returned if the payment was created</response>
         /// <response code="400">Returned if the model couldn't be parsed or saved</response>
@@ -36,14 +41,14 @@ namespace PaymentGatewayApi.Controllers.v1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [HttpPost]
-        public async Task<ActionResult<Payment>> Payment(PaymentGatewayModel paymentGatewayModel)
+        public async Task<ActionResult<Payment>> Payment(CreatePaymentModel createPaymentModel)
         {
             try
             {
-                return await _mediator.Send(new CreatePaymentCommand
+                return await Task.Run(() =>_mediator.Send(new CreatePaymentCommand
                 {
-                    Payment = _mapper.Map<Payment>(paymentGatewayModel)
-                });
+                    Payment = _mapper.Map<Payment>(createPaymentModel)
+                }));
             }
             catch (Exception ex)
             {
