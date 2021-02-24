@@ -25,7 +25,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore PaymentApi/PaymentApi.sln
     - name: Build
       run: dotnet build ~/paymentgateway/PaymentApi/PaymentApi.sln --no-restore
     - name: Test
