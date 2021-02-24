@@ -23,3 +23,11 @@
 /AcquiringBankMock/.vs/AcquiringBankMock/v16
 /AcquiringBankMock/AcquiringBankMock/bin/Debug/net5.0
 /AcquiringBankMock/AcquiringBankMock/obj
+/AcquiringBankMock/.vs/AcquiringBankMock/DesignTimeBuild
+/PaymentGatewayApi/PaymentGatewayApi.Messaging.Send/bin/Debug/netcoreapp3.1
+/PaymentGatewayApi/PaymentGatewayApi.Service/bin/Debug/netcoreapp3.1
+/PaymentGatewayApi/PaymentGatewayApi.Service/obj
+/PaymentGatewayApi/PaymentGatewayApi.Domain/bin/Debug
+/PaymentGatewayApi/PaymentGatewayApi.Messaging.Send/bin/Debug/net5.0
+/PaymentGatewayApi/PaymentGatewayApi.Service/bin/Debug/net5.0
+/PaymentGatewayApi/PaymentGatewayApi.Test/obj
