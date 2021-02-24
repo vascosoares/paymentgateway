@@ -31,3 +31,6 @@
 /PaymentGatewayApi/PaymentGatewayApi.Messaging.Send/bin/Debug/net5.0
 /PaymentGatewayApi/PaymentGatewayApi.Service/bin/Debug/net5.0
 /PaymentGatewayApi/PaymentGatewayApi.Test/obj
+/PaymentApi/PaymentApi.Data/bin/Debug/net5.0
+/PaymentApi/PaymentApi.Domain/bin/Debug/net5.0
+/PaymentApi/PaymentApi.Service/bin/Debug/net5.0
