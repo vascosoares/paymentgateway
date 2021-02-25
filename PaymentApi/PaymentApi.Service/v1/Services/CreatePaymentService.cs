@@ -24,7 +24,7 @@ namespace PaymentApi.Service.v1.Services
                 {
                     Payment = new Domain.Payment
                     { 
-                        Id = createPaymentModel.Id 
+                        Id = createPaymentModel.Id
                     }
                 });
             }
