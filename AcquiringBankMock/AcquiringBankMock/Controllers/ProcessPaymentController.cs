@@ -34,15 +34,15 @@ namespace AcquiringBankMock.Controllers
         {
             try
             {
-                return new Payment
+                return await Task.Run(() => new Payment
                 {
                     Id = new Guid(),
-                    CardNumber = paymentModel.CardNumber,
-                    ExpiryMonth = 12,
-                    ExpiryYear = 2021,
-                    Amount = 12.60,
-                    Currency = "EUR"
-                };
+                    CardNumber = string.Concat("xxxxxxxxxxxx", paymentModel.CardNumber.Substring(12)),
+                    ExpiryMonth = paymentModel.ExpiryMonth,
+                    ExpiryYear = paymentModel.ExpiryYear,
+                    Amount = paymentModel.Amount,
+                    Currency = paymentModel.Currency
+                });
             }
             catch (Exception ex)
             {
