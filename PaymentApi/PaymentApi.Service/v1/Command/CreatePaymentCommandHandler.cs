@@ -30,14 +30,14 @@ namespace PaymentApi.Service.v1.Command
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 // (TODO VS) Remote Service should be resolved somehow. Configuration? Other Service? Problems comunicating in docker and TLS certificates
-                using (HttpResponseMessage response = await httpClient.PostAsync("https://127.0.0.1:44379/ProcessPayment", byteContent))
+                using (HttpResponseMessage response = await httpClient.PostAsync("https://localhost:44379/ProcessPayment", byteContent, cancellationToken))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     payment = JsonConvert.DeserializeObject<Payment>(apiResponse);
                 }
             }
 
-            payment = await _paymentRepository.AddAsync(request.Payment);
+            payment = await _paymentRepository.AddAsync(payment);
 
             return payment;
         }
