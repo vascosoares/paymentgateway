@@ -15,6 +15,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,6 +45,20 @@ namespace PaymentGatewayApi
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc().AddFluentValidation();
+
+            //OAuth configuration
+            string authority = $"https://{Configuration["Auth0:Domain"]}/";
+            string audience = Configuration["Auth0:Audience"];
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = authority;
+                options.Audience = audience;
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -112,6 +127,8 @@ namespace PaymentGatewayApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

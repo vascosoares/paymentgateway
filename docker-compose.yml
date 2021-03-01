@@ -1,0 +1,46 @@
+version: "3.6"
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=password        
+        image: rabbitmq:3-management
+        
+    acquiringbankmock:
+        container_name: acquiringbankmock
+        ports:
+            - 44379:44379
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=password        
+        image: vascosoares/acquiringbankmock
+                
+    paymentapi:
+        container_name: paymentapi
+        ports:
+            - 44394:44394
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword        
+        image: vascosoares/paymentapi   
+        restart: on-failure        
+        depends_on:
+            - rabbitmq
+        
+    paymentgatewayapi:
+        container_name: paymentgatewayapi
+        ports:
+            - 44382:44382
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword       
+        image: vascosoares/paymentgatewayapi       
+        restart: on-failure
+        depends_on:
+            - rabbitmq
