@@ -128,7 +128,7 @@ namespace PaymentGatewayApi
 
             app.UseAuthorization();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -15,24 +15,24 @@ using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.AspNetCore.Hosting;
-//using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
-//using Microsoft.Extensions.Configuration;
-//using Microsoft.Extensions.DependencyInjection;
-//using Microsoft.Extensions.Hosting;
-//using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using PaymentApi.Data.Database;
 using PaymentApi.Data.Repository.v1;
 using PaymentApi.Domain;
-//using PaymentApi.Messaging.Receive.Options.v1;
-//using PaymentApi.Messaging.Receive.Receiver.v1;
+using PaymentApi.Messaging.Receive.Options.v1;
+using PaymentApi.Messaging.Receive.Receiver.v1;
 using PaymentApi.Models.v1;
 using PaymentApi.Service.v1.Command;
 using PaymentApi.Service.v1.Query;
-//using PaymentApi.Service.v1.Services;
+using PaymentApi.Service.v1.Services;
 using PaymentApi.Validators.v1;
 
 namespace PaymentApi
@@ -52,7 +52,9 @@ namespace PaymentApi
             services.AddHealthChecks();
             services.AddOptions();
 
-            // (TODO VS) Add configuration for Messaging Queues
+            var serviceClientSettingsConfig = Configuration.GetSection("RabbitMq");
+            var serviceClientSettings = serviceClientSettingsConfig.Get<RabbitMqConfiguration>();
+            services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
 
             services.AddDbContext<PaymentContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
@@ -108,12 +110,12 @@ namespace PaymentApi
             services.AddTransient<IRequestHandler<GetPaymentByIdQuery, Payment>, GetPaymentByIdQueryHandler>();
             services.AddTransient<IRequestHandler<CreatePaymentCommand, Payment>, CreatePaymentCommandHandler>();
 
-            //services.AddTransient<ICustomerNameUpdateService, CustomerNameUpdateService>();
+            services.AddTransient<ICreatePaymentService, CreatePaymentService>();
 
-            /*if (serviceClientSettings.Enabled)
+            if (serviceClientSettings.Enabled)
             {
-                services.AddHostedService<CustomerFullNameUpdateReceiver>();
-            }*/
+                services.AddHostedService<PaymentCreateReceiver>();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,9 @@ namespace PaymentApi.Models.v1
 {
     public class PaymentModel
     {
-        [Required] 
+        [Required]
+        public Guid Id { get; set; }
+
         public Guid PaymentGuid { get; set; }
 
         [Required] 

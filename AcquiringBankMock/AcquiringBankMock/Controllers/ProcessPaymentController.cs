@@ -36,7 +36,7 @@ namespace AcquiringBankMock.Controllers
             {
                 return await Task.Run(() => new Payment
                 {
-                    Id = new Guid(),
+                    Id = System.Guid.NewGuid(),
                     CardNumber = string.Concat("xxxxxxxxxxxx", paymentModel.CardNumber.Substring(12)),
                     ExpiryMonth = paymentModel.ExpiryMonth,
                     ExpiryYear = paymentModel.ExpiryYear,
