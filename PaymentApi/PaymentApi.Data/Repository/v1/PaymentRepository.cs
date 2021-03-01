@@ -9,7 +9,7 @@ namespace PaymentApi.Data.Repository.v1
 {
     public class PaymentRepository : Repository<Payment>, IPaymentRepository
     {
-        public PaymentRepository(PaymentContext orderContext) : base(orderContext)
+        public PaymentRepository(PaymentContext paymentContext) : base(paymentContext)
         {
         }
 

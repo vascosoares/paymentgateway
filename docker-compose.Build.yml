@@ -15,7 +15,10 @@ services:
         container_name: acquiringbankmock
         ports:
             - 44379:44379        
-        image: vascosoares/acquiringbankmock
+        build:
+            context: ./AcquiringBankMock
+            dockerfile: AcquiringBankMock/Dockerfile
+        restart: on-failure
                 
     paymentapi:
         container_name: paymentapi
@@ -25,7 +28,9 @@ services:
         #    - "ASPNETCORE_URLS=https://+;http://+"
         #    - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
         #    - Kestrel__Certificates__Default__Password=SecretPassword        
-        image: vascosoares/paymentapi   
+        build:
+            context: ./PaymentApi
+            dockerfile: PaymentApi/Dockerfile
         restart: on-failure        
         depends_on:
             - rabbitmq
@@ -38,7 +43,9 @@ services:
         #    - "ASPNETCORE_URLS=https://+;http://+"
         #    - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
         #    - Kestrel__Certificates__Default__Password=SecretPassword       
-        image: vascosoares/paymentgatewayapi       
+        build:
+            context: ./PaymentApi
+            dockerfile: PaymentApi/Dockerfile     
         restart: on-failure
         depends_on:
             - rabbitmq

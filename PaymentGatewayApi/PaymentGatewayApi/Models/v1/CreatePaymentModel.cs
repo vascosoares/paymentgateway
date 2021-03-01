@@ -5,6 +5,8 @@ namespace PaymentGatewayApi.Models.v1
 {
     public class CreatePaymentModel
     {
+        public Guid Id { get; set; }
+
         [Required]
         public string CardNumber { get; set; }
 

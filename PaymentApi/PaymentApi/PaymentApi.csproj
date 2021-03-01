@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentApi.Data\PaymentApi.Data.csproj" />
+    <ProjectReference Include="..\PaymentApi.Messaging.Receive\PaymentApi.Messaging.Receive.csproj" />
     <ProjectReference Include="..\PaymentApi.Service\PaymentApi.Service.csproj" />
   </ItemGroup>
 

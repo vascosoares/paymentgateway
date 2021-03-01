@@ -34,6 +34,8 @@ namespace PaymentApi.Service.v1.Command
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     payment = JsonConvert.DeserializeObject<Payment>(apiResponse);
+                    payment.PaymentGuid = payment.Id;
+                    payment.Id = request.Payment.Id;
                 }
             }
 
