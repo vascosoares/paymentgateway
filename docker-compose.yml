@@ -14,17 +14,34 @@ services:
     acquiringbankmock:
         container_name: acquiringbankmock
         ports:
-            - 44379:44379        
+            - 44379:44379
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://+:44379;http://+
+            - ASPNETCORE_HTTPS_PORT=44379
+            - Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+            - Kestrel__Certificates__Default__Password=Password
+        volumes:
+            - ~/.aspnet/https:/https:ro
         image: vascosoares/acquiringbankmock
                 
     paymentapi:
         container_name: paymentapi
         ports:
             - 44394:44394
-        #environment:
-        #    - "ASPNETCORE_URLS=https://+;http://+"
-        #    - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-        #    - Kestrel__Certificates__Default__Password=SecretPassword        
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://+:44394;http://+
+            - ASPNETCORE_HTTPS_PORT=44394
+            - Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+            - Kestrel__Certificates__Default__Password=Password
+            # RabbitMq Settings
+            - RabbitMq__Hostname=localhost
+            - RabbitMq__QueueName=PaymentQueue
+            - RabbitMq__UserName=user
+            - RabbitMq__Password=password
+        volumes:
+            - ~/.aspnet/https:/https:ro
         image: vascosoares/paymentapi   
         restart: on-failure        
         depends_on:
@@ -34,10 +51,19 @@ services:
         container_name: paymentgatewayapi
         ports:
             - 44382:44382
-        #environment:
-        #    - "ASPNETCORE_URLS=https://+;http://+"
-        #    - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-        #    - Kestrel__Certificates__Default__Password=SecretPassword       
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://+:44382;http://+
+            - ASPNETCORE_HTTPS_PORT=44382
+            - Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+            - Kestrel__Certificates__Default__Password=Password
+            # RabbitMq Settings
+            - RabbitMq__Hostname=localhost
+            - RabbitMq__QueueName=PaymentQueue
+            - RabbitMq__UserName=user
+            - RabbitMq__Password=password
+        volumes:
+            - ~/.aspnet/https:/https:ro
         image: vascosoares/paymentgatewayapi       
         restart: on-failure
         depends_on:
