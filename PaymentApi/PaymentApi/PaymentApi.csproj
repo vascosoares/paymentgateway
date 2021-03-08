@@ -12,6 +12,11 @@
     <DocumentationFile>C:\Users\vasco\source\repos\CheckOut\paymentgateway\PaymentApi\PaymentApi\PaymentApi.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>C:\Users\vasco\source\repos\CheckOut\paymentgateway\PaymentApi\PaymentApi\PaymentApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.1" />

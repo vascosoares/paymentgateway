@@ -36,3 +36,4 @@
 /PaymentApi/PaymentApi.Service/bin/Debug/net5.0
 /PaymentApi/PaymentApi.Messaging.Receive/bin/Debug/net5.0
 /PaymentGatewayApi/PaymentGatewayApi.Test/bin/Debug/net5.0
+/PaymentApi/Tests/PaymentApi.Test/bin/Debug/net5.0

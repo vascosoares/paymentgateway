@@ -34,6 +34,7 @@ namespace AcquiringBankMock.Controllers
         {
             try
             {
+                _logger.LogInformation("Processing External Payment with Id: " + paymentModel.Id.ToString());
                 return await Task.Run(() => new Payment
                 {
                     Id = System.Guid.NewGuid(),
