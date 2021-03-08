@@ -5,8 +5,8 @@ namespace AcquiringBankMock
     public class Payment
     {
         public Guid Id { get; set; }
-        public int PaymentState { get; set; }
-        public Guid PaymentGuid { get; set; }
+        //public int PaymentState { get; set; }
+        //public Guid PaymentGuid { get; set; }
         public string CardNumber { get; set; }
         public int ExpiryMonth { get; set; }
         public int ExpiryYear { get; set; }

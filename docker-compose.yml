@@ -40,6 +40,8 @@ services:
             - RabbitMq__QueueName=PaymentQueue
             - RabbitMq__UserName=user
             - RabbitMq__Password=password
+            # External Bank EndPoint
+            - ExternalBankHook__EndPoint=https://localhost:44379/ProcessPayment/
         volumes:
             - ~/.aspnet/https:/https:ro
         image: vascosoares/paymentapi   

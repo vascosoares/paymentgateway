@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using PaymentApi.Messaging.Receive.Options.v1;
 using PaymentApi.Service.v1.Models;
@@ -14,6 +15,7 @@ namespace PaymentApi.Messaging.Receive.Receiver.v1
 {
     public class PaymentCreateReceiver : BackgroundService
     {
+        private readonly ILogger<PaymentCreateReceiver> _logger;
         private IModel _channel;
         private IConnection _connection;
         private readonly ICreatePaymentService _createPaymentService;
@@ -22,14 +24,16 @@ namespace PaymentApi.Messaging.Receive.Receiver.v1
         private readonly string _username;
         private readonly string _password;
 
-        public PaymentCreateReceiver(ICreatePaymentService createPaymentService, IOptions<RabbitMqConfiguration> rabbitMqOptions)
+        public PaymentCreateReceiver(ICreatePaymentService createPaymentService, IOptions<RabbitMqConfiguration> rabbitMqOptions, ILogger<PaymentCreateReceiver> logger)
         {
+            _logger = logger;
+
             _hostname = rabbitMqOptions.Value.Hostname;
             _queueName = rabbitMqOptions.Value.QueueName;
             _username = rabbitMqOptions.Value.UserName;
             _password = rabbitMqOptions.Value.Password;
             _createPaymentService = createPaymentService;
-            InitializeRabbitMqListener();
+            //InitializeRabbitMqListener();
         }
 
         private void InitializeRabbitMqListener()
@@ -38,13 +42,14 @@ namespace PaymentApi.Messaging.Receive.Receiver.v1
             {
                 HostName = _hostname,
                 UserName = _username,
-                Password = _password
+                Password = _password,
             };
 
             _connection = factory.CreateConnection();
             _connection.ConnectionShutdown += RabbitMQ_ConnectionShutdown;
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+            _logger.LogInformation("RabbitMQ was correctly initialized to host " + _hostname + " and subscribed Queue: " + _queueName);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -66,7 +71,7 @@ namespace PaymentApi.Messaging.Receive.Receiver.v1
             consumer.Unregistered += OnConsumerUnregistered;
             consumer.ConsumerCancelled += OnConsumerCancelled;
 
-            _channel.BasicConsume(_queueName, false, consumer);
+            //_channel.BasicConsume(_queueName, false, consumer);
 
             return Task.CompletedTask;
         }
